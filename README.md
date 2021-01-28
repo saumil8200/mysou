@@ -1,2 +1,2 @@
 # mysou
-Dashboard for Silver Oak University
+Please switch to master branch to access files
