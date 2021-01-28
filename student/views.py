@@ -37,5 +37,60 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("student:login"))
 
+# DashBoard
+def dashboard(request):
+    if request.method == "GET":
+        return render(request, "student/dashboard.html")
 
+# Exam Form
+def examForm(request):
+    if request.method == "GET":
+        return render(request, "student/examForm.html")
+
+# Grades
+def grades(request):
+    if request.method == "GET":
+        return render(request, "student/grades.html")
+
+# Resources
+def resources(request):
+    if request.method == "GET":
+        return render(request, "student/resources.html")
+
+# Clubs
+def clubs(request):
+    if request.method == "GET":
+        return render(request, "student/clubs.html")
+
+# Placement
+def placement(request):
+    if request.method == "GET":
+        return render(request, "student/placement.html")
+
+# Settings
+def settings(request):
+    if request.method == "GET":
+        return render(request, "student/settings.html")
+
+
+# Calendar
+def calendar(request):
+    if request.method == "GET":
+        return render(request, "student/calendar.html")
+
+
+# Certficate Request
+def certificate(request):
+    if request.method == "GET":
+        return render(request, "student/certificate.html")
+
+# Tution Fees
+def tutionFee(request):
+    if request.method == "GET":
+        return render(request, "student/tutionFee.html")
+
+# Help
+def help(request):
+    if request.method == "GET":
+        return render(request, "student/help.html")
 
