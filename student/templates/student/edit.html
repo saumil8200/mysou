@@ -1,0 +1,42 @@
+{% extends 'student/layout.html' %} {% load static %}
+
+{% block container %}
+<!-- Settings -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page6">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Student Profile </h1>
+                </div>
+                <div>
+                    <form action="/editData" method="POST">
+                    {% csrf_token %}
+                    {{ form|safe }}
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="nameInput"  value="{{ user }}">
+                            <label for="">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="enrollInput"  value="170770107xyz" readonly>
+                            <label for="">Enrollment Number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="course"  value="BE" readonly>
+                            <label for="">Course</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="branch"  value="07 - Computer Engineering" readonly>
+                            <label for="">Branch</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="currentSem"  value="8th" readonly>
+                            <label for="">Current Semester</label>
+                        </div>                 
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-success mr-auto">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+{% endblock  %}

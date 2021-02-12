@@ -52,10 +52,10 @@
             }
     </style>
 </head>
-<script>
-    var myCarousel = document.querySelector('#myCarousel')
-    var carousel = new bootstrap.Carousel(myCarousel)
-</script>
+    <script>
+        var myCarousel = document.querySelector('#myCarousel')
+        var carousel = new bootstrap.Carousel(myCarousel)
+    </script>
 
 <body>
 
@@ -89,15 +89,21 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/dashboard" data-page="page0">
+                            <a class="nav-link" href="/profile" data-page="page6">
+                                <span data-feather="user"></span>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/dashboard" data-page="page0">
                                 <span data-feather="home"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/examForm" data-page="page1">
+                            <a class="nav-link" href="/notification" data-page="page1">
                                 <span data-feather="clipboard"></span>
-                                Exam Form
+                                Notificatons
                             </a>
                         </li>
                         <li class="nav-item">
@@ -124,12 +130,7 @@
                                 Placements
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/settings" data-page="page6">
-                                <span data-feather="settings"></span>
-                                Settings
-                            </a>
-                        </li>
+                       
                     </ul>
 
                     <h6

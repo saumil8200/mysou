@@ -42,10 +42,10 @@ def dashboard(request):
     if request.method == "GET":
         return render(request, "student/dashboard.html")
 
-# Exam Form
-def examForm(request):
+# Notification
+def notification(request):
     if request.method == "GET":
-        return render(request, "student/examForm.html")
+        return render(request, "student/notification.html")
 
 # Grades
 def grades(request):
@@ -67,10 +67,10 @@ def placement(request):
     if request.method == "GET":
         return render(request, "student/placement.html")
 
-# Settings
-def settings(request):
+# Profile
+def profile(request):
     if request.method == "GET":
-        return render(request, "student/settings.html")
+        return render(request, "student/profile.html")
 
 
 # Calendar
