@@ -119,21 +119,26 @@ body {
     color: white;
     text-decoration: none;
 }
-.delete{
+
+.delete {
     background: transparent;
     line-height: normal;
 }
-.alertBtn{
+
+.alertBtn {
     border: 1px solid red;
 }
-.alertBtn:hover{
+
+.alertBtn:hover {
     background-color: red;
     color: white;
 }
-.successBtn{
+
+.successBtn {
     border: 1px solid lightgreen;
 }
-.successBtn:hover{
+
+.successBtn:hover {
     background-color: lightgreen;
     color: white;
 }

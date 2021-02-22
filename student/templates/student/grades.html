@@ -1,291 +1,282 @@
 {% extends 'student/layout.html' %} {% load static %}
 
 {% block jquery %}
+    (function () {
+        'use strict';
 
-(function() {
-	'use strict';
+        feather.replace();
 
-	feather.replace();
+        // Graphs
+        var ctx = document.getElementById('spi');
+        var spi = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7'],
+                datasets: [{
+                        label: 'My SPI',
+                        data: [9.0, 8.6, 8.4, 9.3, 8.8, 9.2, 10],
+                        lineTension: 0,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: '#f54266',
+                        borderWidth: 2,
+                        barPercentage: 0.7
+                        // pointBackgroundColor: '#f54266'
+                    },
+                    {
+                        label: "Topper's SPI",
+                        data: [9.8, 9.5, 9.3, 9.3, 9.9, 10, 10],
+                        lineTension: 0,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: '#007bff',
+                        borderWidth: 2,
+                        barPercentage: 0.7
+                        // pointBackgroundColor: '#007bff'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false,
+                            stepSize: 0.5
+                        }
+                    }]
+                },
+                legend: {
+                    display: true
+                },
+                layout: {}
+            }
+        });
+    })();
 
-	// Graphs
-	var ctx = document.getElementById('spi');
-	var spi = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: [ 'Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7' ],
-			datasets: [
-				{
-					label: 'My SPI',
-					data: [ 9.0, 8.6, 8.4, 9.3, 8.8, 9.2, 10 ],
-					lineTension: 0,
-					backgroundColor: 'rgba(255, 99, 132, 0.6)',
-					borderColor: '#f54266',
-					borderWidth: 2,
-					barPercentage: 0.7
-					// pointBackgroundColor: '#f54266'
-				},
-				{
-					label: "Topper's SPI",
-					data: [ 9.8, 9.5, 9.3, 9.3, 9.9, 10, 10 ],
-					lineTension: 0,
-					backgroundColor: 'rgba(54, 162, 235, 0.6)',
-					borderColor: '#007bff',
-					borderWidth: 2,
-					barPercentage: 0.7
-					// pointBackgroundColor: '#007bff'
-				}
-			]
-		},
-		options: {
-			responsive: true,
-			maintainAspectRatio: true,
-			scales: {
-				yAxes: [
-					{
-						ticks: {
-							beginAtZero: false,
-							stepSize: 0.5
-						}
-					}
-				]
-			},
-			legend: {
-				display: true
-			},
-			layout: {}
-		}
-	});
+(function () {
+    'use strict';
+
+    feather.replace();
+
+    // Graphs
+    var ctx = document.getElementById('cgpa');
+    var cgpa = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7'],
+            datasets: [{
+                    label: 'My CPI',
+                    data: [9.0, 8.8, 8.7, 8.8, 8.82, 8.9, 9],
+                    lineTension: 0,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: '#f54266',
+                    borderWidth: 2,
+                    barPercentage: 0.7
+                    // pointBackgroundColor: '#f54266'
+                },
+                {
+                    label: "Topper's CPI",
+                    data: [9.8, 9.65, 9.5, 9.47, 9.56, 9.63, 9.7],
+                    lineTension: 0,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: '#007bff',
+                    borderWidth: 2,
+                    barPercentage: 0.7
+                    // pointBackgroundColor: '#007bff'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        stepSize: 0.5
+                    }
+                }]
+            },
+            legend: {
+                display: true
+            },
+            layout: {}
+        }
+    });
 })();
-
-(function() {
-	'use strict';
-
-	feather.replace();
-
-	// Graphs
-	var ctx = document.getElementById('cgpa');
-	var cgpa = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: [ 'Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7' ],
-			datasets: [
-				{
-					label: 'My CPI',
-					data: [ 9.0, 8.8, 8.7, 8.8, 8.82, 8.9, 9 ],
-					lineTension: 0,
-					backgroundColor: 'rgba(255, 99, 132, 0.6)',
-					borderColor: '#f54266',
-					borderWidth: 2,
-					barPercentage: 0.7
-					// pointBackgroundColor: '#f54266'
-				},
-				{
-					label: "Topper's CPI",
-					data: [ 9.8, 9.65, 9.5, 9.47, 9.56, 9.63, 9.7 ],
-					lineTension: 0,
-					backgroundColor: 'rgba(54, 162, 235, 0.6)',
-					borderColor: '#007bff',
-					borderWidth: 2,
-					barPercentage: 0.7
-					// pointBackgroundColor: '#007bff'
-				}
-			]
-		},
-		options: {
-			responsive: true,
-			maintainAspectRatio: true,
-			scales: {
-				yAxes: [
-					{
-						ticks: {
-							beginAtZero: false,
-							stepSize: 0.5
-						}
-					}
-				]
-			},
-			legend: {
-				display: true
-			},
-			layout: {}
-		}
-	});
-})();
-
 {% endblock %}
 
 {% block container %}
 <!-- Grades -->
- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page2">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">My Results </h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This sem
-                        </button>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page2">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">My Results </h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This sem
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- SPI Chart -->
+            <div class="col-md my-2">
+                <div class="card" style="width: 35rem;">
+                    <div class="card-body">
+                        <h3>SPI (Semester Performance Index) </h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="spi"></canvas>
                     </div>
                 </div>
-
-                <div class="container">
-                    <div class="row">
-                        <!-- SPI Chart -->
-                        <div class="col-md my-2">
-                            <div class="card" style="width: 35rem;">
-                                <div class="card-body">
-                                    <h3>SPI (Semester Performance Index) </h3>
-                                </div>
-                                <div class="card-body">
-                                    <canvas id="spi"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- CGPA Chart -->
-                        <div class="col-md my-2">
-                            <div class="card" style="width: 35rem;">
-                                <div class="card-body">
-                                    <h3>CPI (Cumulative Performance Index) </h3>
-                                </div>
-                                <div class="card-body">
-                                    <canvas id="cgpa"></canvas>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <!-- CGPA Chart -->
+            <div class="col-md my-2">
+                <div class="card" style="width: 35rem;">
+                    <div class="card-body">
+                        <h3>CPI (Cumulative Performance Index) </h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="cgpa"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <br>
-                
-                <!-- <h2>My Results</h2> -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>dolor</td>
-                                <td>sit</td>
-                            </tr>
-                            <tr>
-                                <td>1,002</td>
-                                <td>amet</td>
-                                <td>consectetur</td>
-                                <td>adipiscing</td>
-                                <td>elit</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>Integer</td>
-                                <td>nec</td>
-                                <td>odio</td>
-                                <td>Praesent</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>libero</td>
-                                <td>Sed</td>
-                                <td>cursus</td>
-                                <td>ante</td>
-                            </tr>
-                            <tr>
-                                <td>1,004</td>
-                                <td>dapibus</td>
-                                <td>diam</td>
-                                <td>Sed</td>
-                                <td>nisi</td>
-                            </tr>
-                            <tr>
-                                <td>1,005</td>
-                                <td>Nulla</td>
-                                <td>quis</td>
-                                <td>sem</td>
-                                <td>at</td>
-                            </tr>
-                            <tr>
-                                <td>1,006</td>
-                                <td>nibh</td>
-                                <td>elementum</td>
-                                <td>imperdiet</td>
-                                <td>Duis</td>
-                            </tr>
-                            <tr>
-                                <td>1,007</td>
-                                <td>sagittis</td>
-                                <td>ipsum</td>
-                                <td>Praesent</td>
-                                <td>mauris</td>
-                            </tr>
-                            <tr>
-                                <td>1,008</td>
-                                <td>Fusce</td>
-                                <td>nec</td>
-                                <td>tellus</td>
-                                <td>sed</td>
-                            </tr>
-                            <tr>
-                                <td>1,009</td>
-                                <td>augue</td>
-                                <td>semper</td>
-                                <td>porta</td>
-                                <td>Mauris</td>
-                            </tr>
-                            <tr>
-                                <td>1,010</td>
-                                <td>massa</td>
-                                <td>Vestibulum</td>
-                                <td>lacinia</td>
-                                <td>arcu</td>
-                            </tr>
-                            <tr>
-                                <td>1,011</td>
-                                <td>eget</td>
-                                <td>nulla</td>
-                                <td>Class</td>
-                                <td>aptent</td>
-                            </tr>
-                            <tr>
-                                <td>1,012</td>
-                                <td>taciti</td>
-                                <td>sociosqu</td>
-                                <td>ad</td>
-                                <td>litora</td>
-                            </tr>
-                            <tr>
-                                <td>1,013</td>
-                                <td>torquent</td>
-                                <td>per</td>
-                                <td>conubia</td>
-                                <td>nostra</td>
-                            </tr>
-                            <tr>
-                                <td>1,014</td>
-                                <td>per</td>
-                                <td>inceptos</td>
-                                <td>himenaeos</td>
-                                <td>Curabitur</td>
-                            </tr>
-                            <tr>
-                                <td>1,015</td>
-                                <td>sodales</td>
-                                <td>ligula</td>
-                                <td>in</td>
-                                <td>libero</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <br>
 
-            </main>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1,001</td>
+                    <td>Lorem</td>
+                    <td>ipsum</td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                </tr>
+                <tr>
+                    <td>1,002</td>
+                    <td>amet</td>
+                    <td>consectetur</td>
+                    <td>adipiscing</td>
+                    <td>elit</td>
+                </tr>
+                <tr>
+                    <td>1,003</td>
+                    <td>Integer</td>
+                    <td>nec</td>
+                    <td>odio</td>
+                    <td>Praesent</td>
+                </tr>
+                <tr>
+                    <td>1,003</td>
+                    <td>libero</td>
+                    <td>Sed</td>
+                    <td>cursus</td>
+                    <td>ante</td>
+                </tr>
+                <tr>
+                    <td>1,004</td>
+                    <td>dapibus</td>
+                    <td>diam</td>
+                    <td>Sed</td>
+                    <td>nisi</td>
+                </tr>
+                <tr>
+                    <td>1,005</td>
+                    <td>Nulla</td>
+                    <td>quis</td>
+                    <td>sem</td>
+                    <td>at</td>
+                </tr>
+                <tr>
+                    <td>1,006</td>
+                    <td>nibh</td>
+                    <td>elementum</td>
+                    <td>imperdiet</td>
+                    <td>Duis</td>
+                </tr>
+                <tr>
+                    <td>1,007</td>
+                    <td>sagittis</td>
+                    <td>ipsum</td>
+                    <td>Praesent</td>
+                    <td>mauris</td>
+                </tr>
+                <tr>
+                    <td>1,008</td>
+                    <td>Fusce</td>
+                    <td>nec</td>
+                    <td>tellus</td>
+                    <td>sed</td>
+                </tr>
+                <tr>
+                    <td>1,009</td>
+                    <td>augue</td>
+                    <td>semper</td>
+                    <td>porta</td>
+                    <td>Mauris</td>
+                </tr>
+                <tr>
+                    <td>1,010</td>
+                    <td>massa</td>
+                    <td>Vestibulum</td>
+                    <td>lacinia</td>
+                    <td>arcu</td>
+                </tr>
+                <tr>
+                    <td>1,011</td>
+                    <td>eget</td>
+                    <td>nulla</td>
+                    <td>Class</td>
+                    <td>aptent</td>
+                </tr>
+                <tr>
+                    <td>1,012</td>
+                    <td>taciti</td>
+                    <td>sociosqu</td>
+                    <td>ad</td>
+                    <td>litora</td>
+                </tr>
+                <tr>
+                    <td>1,013</td>
+                    <td>torquent</td>
+                    <td>per</td>
+                    <td>conubia</td>
+                    <td>nostra</td>
+                </tr>
+                <tr>
+                    <td>1,014</td>
+                    <td>per</td>
+                    <td>inceptos</td>
+                    <td>himenaeos</td>
+                    <td>Curabitur</td>
+                </tr>
+                <tr>
+                    <td>1,015</td>
+                    <td>sodales</td>
+                    <td>ligula</td>
+                    <td>in</td>
+                    <td>libero</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
             
 {% endblock %}

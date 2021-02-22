@@ -2,45 +2,45 @@
 
 {% block container %}
 <!-- Placements -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page5">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Add Placement Details </h1>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page5">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Add Placement Details </h1>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Provide Details...">
+            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Provide Sub Details..."></textarea><br>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload PDF (optional)</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
+            </form>
+            <small id="emailHelp" class="form-text text-muted">Select Dept. Below To Provide Info. </small>
+        </div><br>
 
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Provide Details...">
-                        <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Provide Sub Details..."></textarea><br>
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Upload PDF (optional)</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                        </form>
-                        <small id="emailHelp" class="form-text text-muted">Select Dept. Below To Provide Info. </small>
-                    </div><br>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1">Computer Eng.</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2">Information Technology</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2">Mechancal</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2">Electrical</label>
+        </div><br>
 
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio1">Computer Eng.</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Information Technology</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Mechancal</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Electrical</label>
-                    </div><br>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </main>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
 {% endblock %}

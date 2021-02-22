@@ -17,13 +17,13 @@ function showPage(page) {
 }
 
 // Wait for page to loaded:
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	// Select all links
 	const links = document.querySelectorAll('a');
 
 	// When a link is clicked, switch to that page
 	for (link of links) {
-		link.addEventListener('click', function() {
+		link.addEventListener('click', function () {
 			document.querySelectorAll('a').forEach((a) => {
 				a.classList.remove('active');
 			});
@@ -32,4 +32,3 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 });
-
