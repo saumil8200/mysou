@@ -23,7 +23,7 @@ def login_view(request):
         passwd = request.POST["password"]
         role = request.POST["role"]
         dept = request.POST["dept_id"]
-        # print(user,passwd,role,dept)
+        print(user,passwd,role,dept)
 
         if role == "admin":
             try:
@@ -37,9 +37,10 @@ def login_view(request):
                 })
         elif role == "student":
             try:
-                StudentData.objects.get(username=user, password=passwd, dept_id=dept, admin=True)
+                StudentData.objects.get(username=user, password=passwd, dept_id=dept)
                 request.session['user'] = user
                 request.session['admin'] = False
+                print("Logged In")
                 return HttpResponseRedirect(reverse("student:index"))
             except:
                 return render(request, "student/login.html", {
@@ -48,17 +49,18 @@ def login_view(request):
     return render(request, "student/login.html")
 
 def index(request):
-    try:
-        if request.session['user'] and request.session['admin']:
-            flag = request.session['admin']
-            if flag:
-                return render(request, "faculty/index.html")
-            else:
-                return render(request, "student/index.html")
-        else:
+    if request.method == "GET":
+        try:
+            if request.session['user']:
+                flag = request.session['admin']
+                if flag == True:
+                    return render(request, "faculty/index.html")
+                else:
+                    print("Called")
+                    return render(request, "student/index.html")
+        except:
+            print("Exception")
             return HttpResponseRedirect(reverse("student:login"))
-    except:
-        return HttpResponseRedirect(reverse("student:login"))
 
 def logout_view(request):
     # logout(request)
@@ -73,10 +75,11 @@ def logout_view(request):
 def templates(request,search):
     if request.method == "GET":
         try:
-            if request.session['user'] and request.session['admin']:
+            if request.session['user']:
                 user = request.session['user']
                 flag = request.session['admin']
-                if flag:
+                print(flag)
+                if flag == True:
                     data = AdminData.objects.get(username=user)
                     return render(request, f"faculty/{search}.html",{
                         "data": data
@@ -86,8 +89,6 @@ def templates(request,search):
                     return render(request, f"student/{search}.html",{
                         "data": data
                     })
-            else:
-                return HttpResponseRedirect(reverse("student:login"))
         except:
             return HttpResponseRedirect(reverse("student:login"))
     if request.method == "POST":
