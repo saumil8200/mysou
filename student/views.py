@@ -3,94 +3,85 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from .models import AdminData, StudentData
 
 # Create your views here.
 def login_view(request):
-    # return HttpResponse("<h1>Hello, world</h1>")
+    if request.method == "GET":
+        try:
+            if request.session['user']:
+                return HttpResponseRedirect(reverse("student:index"))
+            else:
+                return render(request, "student/login.html")
+        except:
+            return render(request, "student/login.html")
+    
     if request.method == "POST":
         # Accessing email and password from form data
-        email = request.POST["email"]
-        password = request.POST["password"]
-        username = User.objects.get(email=email)
-        # Check if username and password are correct, returning User object if so
-        user = authenticate(request, username=username, password=password)
-        # If user object is returned, log in and route to index page:
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(reverse("student:index"))
-        # Otherwise, return login page again with new context
-        else:
-            return render(request, "student/login.html", {
-                "message": "Invalid Credentials"
-            })
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("student:index"))
+        user = request.POST["username"]
+        passwd = request.POST["password"]
+        role = request.POST["role"]
+        dept = request.POST["dept_id"]
+        # print(user,passwd,role,dept)
+
+        if role == "admin":
+            try:
+                AdminData.objects.get(username=user, password=passwd, dept_id=dept, admin=True)
+                request.session['user'] = user
+                request.session['admin'] = True
+                return HttpResponseRedirect(reverse("student:index"))
+            except:
+                return render(request, "student/login.html", {
+                    "message": "Invalid Credentials"
+                })
+        elif role == "student":
+            try:
+                StudentData.objects.get(username=user, password=passwd, dept_id=dept, admin=True)
+                request.session['user'] = user
+                request.session['admin'] = False
+                return HttpResponseRedirect(reverse("student:index"))
+            except:
+                return render(request, "student/login.html", {
+                    "message": "Invalid Credentials"
+                })
     return render(request, "student/login.html")
 
 def index(request):
-    # If no user is signed in, return to login page:
-    if not request.user.is_authenticated:
+    try:
+        if request.session['user']:
+            return render(request, "student/index.html")
+        else:
+            return HttpResponseRedirect(reverse("student:login"))
+    except:
         return HttpResponseRedirect(reverse("student:login"))
-    return render(request, "student/index.html")
 
 def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect(reverse("student:login"))
+    # logout(request)
+    try:
+        del request.session['user']
+        del request.session['admin']
+        return HttpResponseRedirect(reverse("student:login"))
+    except:
+        return HttpResponseRedirect(reverse("student:login"))
 
-# DashBoard
-def dashboard(request):
+
+def templates(request,search):
     if request.method == "GET":
-        return render(request, "student/dashboard.html")
-
-# Notification
-def notification(request):
-    if request.method == "GET":
-        return render(request, "student/notification.html")
-
-# Grades
-def grades(request):
-    if request.method == "GET":
-        return render(request, "student/grades.html")
-
-# Resources
-def resources(request):
-    if request.method == "GET":
-        return render(request, "student/resources.html")
-
-# Clubs
-def clubs(request):
-    if request.method == "GET":
-        return render(request, "student/clubs.html")
-
-# Placement
-def placement(request):
-    if request.method == "GET":
-        return render(request, "student/placement.html")
-
-# Profile
-def profile(request):
-    if request.method == "GET":
-        return render(request, "student/profile.html")
-
-
-# Calendar
-def calendar(request):
-    if request.method == "GET":
-        return render(request, "student/calendar.html")
-
-
-# Certficate Request
-def certificate(request):
-    if request.method == "GET":
-        return render(request, "student/certificate.html")
-
-# Tution Fees
-def tutionFee(request):
-    if request.method == "GET":
-        return render(request, "student/tutionFee.html")
-
-# Help
-def help(request):
-    if request.method == "GET":
-        return render(request, "student/help.html")
-
+        try:
+            if request.session['user'] and request.session['admin']:
+                user = request.session['user']
+                flag = request.session['admin']
+                if flag:
+                    data = AdminData.objects.get(username=user)
+                    return render(request, f"student/{search}.html",{
+                        "data": data
+                    })
+                else:
+                    data = StudentData.objects.get(username=user)
+                    return render(request, f"student/{search}.html",{
+                        "data": data
+                    })
+            else:
+                return HttpResponseRedirect(reverse("student:login"))
+        except:
+            return HttpResponseRedirect(reverse("student:login"))

@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
+
     <title>My SOU</title>
 
 
@@ -63,7 +64,7 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand px-3" href="/index">Silver Oak University</a>
+            <a class="navbar-brand px-3" href="/app">Silver Oak University</a>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <a class="nav-link" href=" {% url 'student:logout' %}">
@@ -87,43 +88,37 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="/profile" data-page="page6">
-                                <span data-feather="user"></span>
-                                Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/dashboard" data-page="page0">
+                            <a class="nav-link " aria-current="page" href="/app/dashboard" data-page="page0">
                                 <span data-feather="home"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/notification" data-page="page1">
+                            <a class="nav-link" href="/app/examForm" data-page="page1">
                                 <span data-feather="clipboard"></span>
-                                Notificatons
+                                Exam Form
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/grades" data-page="page2">
+                            <a class="nav-link" href="/app/grades" data-page="page2">
                                 <span data-feather="bar-chart-2"></span>
                                 Grades
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/resources" data-page="page3">
+                            <a class="nav-link" href="/app/resources" data-page="page3">
                                 <span data-feather="file-text"></span>
                                 Resources
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="clubs" data-page="page4">
+                            <a class="nav-link" href="/app/clubs" data-page="page4">
                                 <span data-feather="activity"></span>
-                                Clubs and Organizations
+                                Clubs
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/placement" data-page="page5">
+                            <a class="nav-link" href="/app/placement" data-page="page5">
                                 <span data-feather="sun"></span>
                                 Placements
                             </a>
@@ -137,19 +132,19 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="/calendar" data-page="page7">
+                            <a class="nav-link" href="/app/calendar" data-page="page7">
                                 <span data-feather="calendar"></span>
                                 Calender
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/certificate" data-page="page8">
+                            <a class="nav-link" href="/app/certificate" data-page="page8">
                                 <span data-feather="award"></span>
                                 Certificate Request
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/tutionFee" data-page="page9">
+                            <a class="nav-link" href="/app/tutionFee" data-page="page9">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-credit-card" viewBox="0 0 16 16">
@@ -163,7 +158,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/help" data-page="page10">
+                            <a class="nav-link" href="/app/help" data-page="page10">
                                 <span data-feather="help-circle"></span>
                                 Help
                             </a>
@@ -202,6 +197,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
+
+       <script>
+            {% block jquery %}
+
+            {% endblock %}
+       </script>
 
     <!-- Internal Scripts -->
     <script src="{% static 'student/dashboard.js' %}"></script>
