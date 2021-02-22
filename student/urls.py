@@ -7,4 +7,5 @@ urlpatterns = [
     path("app", views.index, name="index"),
     path("logout", views.logout_view, name="logout"),
     path("app/<str:search>", views.templates, name="index"),
+    path("admin/<str:search>", views.templates, name="index"),
 ]

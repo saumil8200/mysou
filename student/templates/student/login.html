@@ -23,10 +23,10 @@
                         <h1 class="title has-text-centered" style="font-family: serif;">Silver Oak University</h1>
                         <form action="{% url 'student:login' %}" class="box" method="POST">
                             {% csrf_token %}
-                            {% if message %}
+                            {% if messageAlert %}
                             <div class="notification is-danger is-light">
                                 <button class="delete"></button>
-                                {{ message }}
+                                {{ messageAlert }}
                             </div>
                             {% endif %}
                             <div class="field">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import AdminData, StudentData
 
 # Create your views here.
+
 def login_view(request):
     if request.method == "GET":
         try:
@@ -42,14 +43,18 @@ def login_view(request):
                 return HttpResponseRedirect(reverse("student:index"))
             except:
                 return render(request, "student/login.html", {
-                    "message": "Invalid Credentials"
+                    "messageAlert": "Invalid Credentials"
                 })
     return render(request, "student/login.html")
 
 def index(request):
     try:
-        if request.session['user']:
-            return render(request, "student/index.html")
+        if request.session['user'] and request.session['admin']:
+            flag = request.session['admin']
+            if flag:
+                return render(request, "faculty/index.html")
+            else:
+                return render(request, "student/index.html")
         else:
             return HttpResponseRedirect(reverse("student:login"))
     except:
@@ -73,7 +78,7 @@ def templates(request,search):
                 flag = request.session['admin']
                 if flag:
                     data = AdminData.objects.get(username=user)
-                    return render(request, f"student/{search}.html",{
+                    return render(request, f"faculty/{search}.html",{
                         "data": data
                     })
                 else:
@@ -85,3 +90,38 @@ def templates(request,search):
                 return HttpResponseRedirect(reverse("student:login"))
         except:
             return HttpResponseRedirect(reverse("student:login"))
+    if request.method == "POST":
+        try:
+            if request.session['admin'] == True and request.session['user']:
+                # print("posting Data")
+                user = request.POST["username"]
+                passwd = request.POST["password"]
+                dept = request.POST["dept_id"]
+                role = request.POST["role"]
+                print(user,passwd,dept,role)
+                if role == "admin":
+                    try:
+                        form = AdminData(username=user, password=passwd, dept_id=dept,admin=True)
+                        form.save()
+                        return render(request, "faculty/register.html", {
+                                "messageSuccess": "Admin Created"
+                            })
+                    except:
+                        return render(request, "faculty/register.html", {
+                            "messageAlert": "User Already Exist"
+                            })
+                elif role == "student":
+                    try:
+                        form = StudentData(username=user, password=passwd, dept_id=dept)
+                        form.save()
+                        return render(request, "faculty/register.html", {
+                                "messageSuccess": "User Created"
+                            })
+                    except:
+                        return render(request, "faculty/register.html", {
+                                "messageAlert": "User Already Exist"
+                            })
+        except:
+            return render(request, "faculty/register.html", {
+                                "messageAlert": "Error While Creating User"
+                            })
